@@ -17,10 +17,11 @@ import ListarFacturas from './components/secciones/Layouts Consumos/ListarFactur
 
 import './App.css';
 import CargarFacturas from './components/secciones/Layouts Consumos/CargarFacturas';
+import LogIn from './components/LogIn';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Dashboard/>}>
+    <Route path="/" element={<LogIn/>}>
     
       <Route path="consumo" element={<Consumo/>} >
         <Route path="cargar-facturas" element={<CargarFacturas/>}/>

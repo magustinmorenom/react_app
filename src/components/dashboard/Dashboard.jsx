@@ -21,6 +21,7 @@ import { mainListItems } from './listItems';
 import {Outlet} from 'react-router-dom'
 import Orders from './Orders';
 import CounterComponent from '../CounterComponent';
+import MuestraPersistencia from '../MuestraPersistencia';
 
 function Copyright(props) {
   return (
@@ -123,8 +124,10 @@ export default function Dashboard() {
             >
               Contador de Control
              </Typography>
+             
               
              <CounterComponent/>
+             <MuestraPersistencia/>
 
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
