@@ -20,6 +20,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems } from './listItems';
 import {Outlet} from 'react-router-dom'
 import Orders from './Orders';
+import CounterComponent from '../CounterComponent';
 
 function Copyright(props) {
   return (
@@ -93,6 +94,8 @@ export default function Dashboard() {
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
+
+        {/*Barra Azul Superior ####################################*/}
         <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
@@ -118,8 +121,11 @@ export default function Dashboard() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
-            </Typography>
+              Contador de Control
+             </Typography>
+              
+             <CounterComponent/>
+
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
@@ -127,6 +133,9 @@ export default function Dashboard() {
             </IconButton>
           </Toolbar>
         </AppBar>
+        {/*Fin de Barra Azul Superior------------------------ */}
+        
+        
         <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
