@@ -17,7 +17,7 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems } from './listItems';
+import {MainListItems} from '/Users/agustin/Documents/15 Web Apps/00 React Tests/01 React App Basica/proyectoReact/src/components/dashboard/ListItems.jsx';
 import {Outlet} from 'react-router-dom'
 import Orders from './Orders';
 import CounterComponent from '../CounterComponent';
@@ -154,7 +154,7 @@ export default function Dashboard() {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+            <MainListItems/>
            </List>
         </Drawer>
         <Box

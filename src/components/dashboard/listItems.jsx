@@ -3,67 +3,55 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import BoltIcon from '@mui/icons-material/Bolt';
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '/Users/agustin/Documents/15 Web Apps/00 React Tests/01 React App Basica/proyectoReact/src/redux/slices/authSlice.jsx'; // Asegúrate de que la ruta sea correcta
 
-export const mainListItems = (
-  <React.Fragment>
-    <ListItemButton component={NavLink} to="consumo">
-      <ListItemIcon>
-        <BoltIcon />
-      </ListItemIcon>
-      <ListItemText primary="Consumos" />
-    </ListItemButton>
-  
-    <ListItemButton component={NavLink} to="usuarios">
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Usuarios" />
-    </ListItemButton>
-    <ListItemButton component={NavLink} to="reportes">
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reportes" />
-    </ListItemButton>
-    <ListItemButton component={NavLink} to="mas">
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Mas" />
-    </ListItemButton>
-  </React.Fragment>
-);
+export  const MainListItems = () => {
+  const dispatch = useDispatch();
 
-export const secondaryListItems = (
-  <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItemButton>
-  </React.Fragment>
-);
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  return (
+    <React.Fragment>
+      <ListItemButton component={NavLink} to="consumo">
+        <ListItemIcon>
+          <BoltIcon />
+        </ListItemIcon>
+        <ListItemText primary="Consumos" />
+      </ListItemButton>
+      <ListItemButton component={NavLink} to="usuarios">
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Usuarios" />
+      </ListItemButton>
+      <ListItemButton component={NavLink} to="reportes">
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Reportes" />
+      </ListItemButton>
+      <ListItemButton component={NavLink} to="mas">
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="Mas" />
+      </ListItemButton>
+      <ListItemButton onClick={handleLogout}>
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="Salir" />
+      </ListItemButton>
+    </React.Fragment>
+  );
+};
+export default MainListItems;

@@ -20,6 +20,14 @@ export const login = createAsyncThunk('auth/login', async (credentials) => {
   return user; // Devuelve el usuario autenticado
 });
 
+// Acción asíncrona para verificar la autenticación
+export const checkAuth = createAsyncThunk('auth/checkAuth', async () => {
+  // Obtiene el estado de autenticación almacenado en localStorage
+  const storedAuthState = localStorage.getItem('isAuthenticated');
+  // Devuelve true si el estado almacenado es 'true', de lo contrario false
+  return storedAuthState === 'true';
+});
+
 // Crea una slice de autenticación con createSlice
 const authSlice = createSlice({
   name: 'auth', // Nombre de la slice
@@ -33,20 +41,26 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isAuthenticated = false; // Cambia el estado de autenticación a falso
       state.user = null; // Borra el usuario del estado
+      localStorage.removeItem('isAuthenticated'); // Elimina el estado de autenticación de localStorage
+
     },
   },
   extraReducers: (builder) => {
-    // Define reductores adicionales para manejar las acciones asíncronas
     builder
-      // Caso de éxito del login
-      .addCase(login.fulfilled, (state, action) => {
-        state.isAuthenticated = true; // Cambia el estado de autenticación a verdadero
-        state.user = action.payload; // Almacena el usuario autenticado en el estado
-        state.error = null; // Resetea cualquier error previo
+      // Caso de éxito para checkAuth
+      .addCase(checkAuth.fulfilled, (state, action) => {
+        state.isAuthenticated = action.payload;
       })
-      // Caso de fallo del login
+      // Caso de éxito para login
+      .addCase(login.fulfilled, (state, action) => {
+        state.isAuthenticated = true;
+        state.user = action.payload;
+        state.error = null;
+        localStorage.setItem('isAuthenticated', 'true');
+      })
+      // Caso de rechazo para login
       .addCase(login.rejected, (state, action) => {
-        state.error = action.error.message; // Almacena el mensaje de error en el estado
+        state.error = action.error.message;
       });
   },
 });
