@@ -17,8 +17,8 @@ import ListarFacturas from './components/secciones/Layouts Consumos/ListarFactur
 
 import './App.css';
 import CargarFacturas from './components/secciones/Layouts Consumos/CargarFacturas';
-import LogIn from './components/LogIn';
-
+import LogIn from '/Users/agustin/Documents/15 Web Apps/00 React Tests/01 React App Basica/proyectoReact/src/components/Login.jsx';
+console.log('ACA PONGO EL BREAKPOINT')
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<LogIn/>}>
